@@ -44,3 +44,27 @@ def get_color_dataframe_for_video(video_file):
     
     return df
 
+
+def get_three_color_gradient_list():
+
+    two_color_gradient_list = []
+
+    for i1 in range(8):
+        seq = list(range(8))
+        if i1%2 == 1:
+            seq.reverse()
+        for i2 in seq:
+            two_color_gradient_list += [f'{i1}{i2}']
+
+    three_color_gradient_list = []
+
+    for i1 in range(8):
+        seq = two_color_gradient_list
+        if i1%2 == 1:
+            seq.reverse()
+        for i2 in seq:
+            three_color_gradient_list += [f'{i1}{i2}']
+
+    return three_color_gradient_list
+
+
