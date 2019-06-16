@@ -24,3 +24,23 @@ def get_simplified_color_distribution(frame):
         return simplified_color_distribution
     
 
+def get_color_dataframe_for_video(video_file):
+
+    cap = cv2.VideoCapture(video_file)
+
+    color_distribution_data = []
+
+    while True:
+
+        # Capture frame-by-frame
+        ret, frame = cap.read()
+
+        if ret:
+            color_distribution_data += [get_simplified_color_distribution(frame)]
+        else:
+            break
+
+    df = pd.DataFrame(color_distribution_data)
+    
+    return df
+
