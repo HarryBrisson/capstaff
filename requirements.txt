@@ -1,0 +1,3 @@
+youtube-dl
+opencv-python
+pandas
