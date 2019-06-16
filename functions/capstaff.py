@@ -82,3 +82,17 @@ def create_color_palette_strip_for_color_distribution(color_distribution):
 
     return color_strip
 
+
+def get_palette_over_time_data_for_color_df(df):
+
+    color_data = df.to_dict(orient='records')
+    palette_over_time_data = []
+    i = 0
+    for color_distribution in color_data:
+        color_strip = create_color_palette_strip_for_color_distribution(color_distribution)
+        palette_over_time_data.append(color_strip)
+        i += 1
+        print(f'frame {i}')
+
+    return palette_over_time_data
+
