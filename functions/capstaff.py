@@ -68,3 +68,17 @@ def get_three_color_gradient_list():
     return three_color_gradient_list
 
 
+def create_color_palette_strip_for_color_distribution(color_distribution):
+    gradient = get_three_color_gradient_list()
+
+    color_strip = []
+
+    for c in gradient:
+        if c in color_distribution.keys() and not np.isnan(color_distribution[c]):
+            pixel_values = ()
+            for i in range(3):
+                pixel_values += (int(c[i])*32,)
+            color_strip += [pixel_values]*int(color_distribution[c])
+
+    return color_strip
+
