@@ -96,3 +96,21 @@ def get_palette_over_time_data_for_color_df(df):
 
     return palette_over_time_data
 
+
+def create_image_from_palette_data(data,filename):
+
+    image = np.array(data)
+    image = np.rot90(image)
+    cv2.imwrite(filename,image)
+
+
+def create_palette_over_time_visual(video_input,image_filename):
+
+    df = get_color_dataframe_for_video(video_input)
+    if len(df) == 0:
+        print('empty dataframe')
+        return
+    data = get_palette_over_time_data_for_color_df(df)
+    create_image_from_palette_data(data, image_filename)
+
+
